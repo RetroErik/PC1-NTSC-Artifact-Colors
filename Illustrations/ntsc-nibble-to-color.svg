@@ -1,0 +1,328 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <!-- Background gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1a3a5c"/>
+      <stop offset="100%" stop-color="#0a1a2e"/>
+    </radialGradient>
+    <!-- Gold gradient for borders -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4a020"/>
+      <stop offset="30%" stop-color="#f0d060"/>
+      <stop offset="50%" stop-color="#ffe880"/>
+      <stop offset="70%" stop-color="#f0d060"/>
+      <stop offset="100%" stop-color="#d4a020"/>
+    </linearGradient>
+    <!-- Gold gradient for title -->
+    <linearGradient id="titleGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a07010"/>
+      <stop offset="20%" stop-color="#d4a020"/>
+      <stop offset="50%" stop-color="#ffe880"/>
+      <stop offset="80%" stop-color="#d4a020"/>
+      <stop offset="100%" stop-color="#a07010"/>
+    </linearGradient>
+    <!-- Grid pattern -->
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="none"/>
+      <line x1="20" y1="0" x2="20" y2="20" stroke="#ffffff08" stroke-width="0.5"/>
+      <line x1="0" y1="20" x2="20" y2="20" stroke="#ffffff08" stroke-width="0.5"/>
+    </pattern>
+    <!-- Glow filter for title -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Drop shadow -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#00000080"/>
+    </filter>
+    <!-- Arrow marker -->
+    <marker id="arrowGold" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#d4a020"/>
+    </marker>
+  </defs>
+
+  <!-- ==================== BACKGROUND ==================== -->
+  <rect width="1600" height="900" fill="url(#bgGrad)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+
+  <!-- ==================== OUTER GOLD BORDER ==================== -->
+  <rect x="15" y="15" width="1570" height="870" rx="8" ry="8"
+        fill="none" stroke="url(#goldGrad)" stroke-width="4"/>
+  <rect x="22" y="22" width="1556" height="856" rx="6" ry="6"
+        fill="none" stroke="#d4a02060" stroke-width="1"/>
+
+  <!-- Corner ornaments -->
+  <circle cx="15" cy="15" r="6" fill="#d4a020" opacity="0.6"/>
+  <circle cx="1585" cy="15" r="6" fill="#d4a020" opacity="0.6"/>
+  <circle cx="15" cy="885" r="6" fill="#d4a020" opacity="0.6"/>
+  <circle cx="1585" cy="885" r="6" fill="#d4a020" opacity="0.6"/>
+
+  <!-- ==================== TITLE ==================== -->
+  <text x="800" y="62" text-anchor="middle" font-size="30" font-weight="bold"
+        fill="url(#titleGold)" filter="url(#glow)" letter-spacing="3">
+    NTSC ARTIFACT COLORS — HOW PIXEL PATTERNS BECOME COLORS
+  </text>
+  <line x1="100" y1="78" x2="1500" y2="78" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Subtitle -->
+  <text x="800" y="100" text-anchor="middle" font-size="15" fill="#88bbdd" opacity="0.9">
+    CGA Mode 6 (640×200 Monochrome) — Each group of 4 pixels = 1 color on NTSC composite
+  </text>
+
+  <!-- ==================== LEFT: EXPLANATION PANEL ==================== -->
+  <rect x="40" y="118" width="440" height="200" rx="6" fill="#0d2240" stroke="#d4a020" stroke-width="1.5" opacity="0.9"/>
+  <text x="260" y="145" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffe880">WHY 4 PIXELS = 1 COLOR</text>
+  <line x1="60" y1="155" x2="460" y2="155" stroke="#d4a02060" stroke-width="1"/>
+
+  <text x="60" y="178" font-size="13" fill="#ccddeeff">CGA's pixel clock in mode 6 is 14.318 MHz —</text>
+  <text x="60" y="196" font-size="13" fill="#ccddeeff">exactly 4× the NTSC color burst frequency.</text>
+  <text x="60" y="220" font-size="13" fill="#ccddeeff">Every 4 pixels align with one color cycle.</text>
+  <text x="60" y="244" font-size="13" fill="#ccddeeff">The on/off pattern within those 4 pixels</text>
+  <text x="60" y="262" font-size="13" fill="#ccddeeff">determines the color a TV displays.</text>
+  <text x="60" y="290" font-size="13" fill="#ffe880" font-weight="bold">4 bits → 16 patterns → 16 artifact colors</text>
+
+  <!-- ==================== RIGHT: PC1 MAPPING PANEL ==================== -->
+  <rect x="500" y="118" width="440" height="200" rx="6" fill="#0d2240" stroke="#d4a020" stroke-width="1.5" opacity="0.9"/>
+  <text x="720" y="145" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffe880">THE PC1 TRICK</text>
+  <line x1="520" y1="155" x2="920" y2="155" stroke="#d4a02060" stroke-width="1"/>
+
+  <text x="520" y="178" font-size="13" fill="#ccddeeff">The V6355D's hidden mode reads each group</text>
+  <text x="520" y="196" font-size="13" fill="#ccddeeff">of 4 bits as a palette index (0–15).</text>
+  <text x="520" y="220" font-size="13" fill="#ccddeeff">CGA mode 6 stores 8 pixels per byte —</text>
+  <text x="520" y="238" font-size="13" fill="#ccddeeff">that's two groups of 4 bits per byte.</text>
+  <text x="520" y="262" font-size="13" fill="#ccddeeff">We program each palette entry to match</text>
+  <text x="520" y="280" font-size="13" fill="#ccddeeff">the NTSC artifact color for that pattern.</text>
+  <text x="520" y="308" font-size="13" fill="#ffe880" font-weight="bold">Same data, same colors — no CPU needed</text>
+
+  <!-- ==================== ARROW: FLOW ==================== -->
+  <rect x="960" y="118" width="600" height="200" rx="6" fill="#0d2240" stroke="#d4a020" stroke-width="1.5" opacity="0.9"/>
+  <text x="1260" y="145" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffe880">EXAMPLE: NIBBLE 1100</text>
+  <line x1="980" y1="155" x2="1540" y2="155" stroke="#d4a02060" stroke-width="1"/>
+
+  <!-- Pixel pattern display -->
+  <text x="1000" y="185" font-size="13" fill="#88bbdd">4 monochrome pixels:</text>
+  <!-- Pixel boxes: 1 1 0 0 -->
+  <rect x="1150" y="170" width="30" height="22" fill="#ffffff" stroke="#88bbdd" stroke-width="1"/>
+  <rect x="1185" y="170" width="30" height="22" fill="#ffffff" stroke="#88bbdd" stroke-width="1"/>
+  <rect x="1220" y="170" width="30" height="22" fill="#111111" stroke="#88bbdd" stroke-width="1"/>
+  <rect x="1255" y="170" width="30" height="22" fill="#111111" stroke="#88bbdd" stroke-width="1"/>
+  <text x="1160" y="186" font-size="12" fill="#111111" font-family="Consolas, monospace" font-weight="bold">ON</text>
+  <text x="1193" y="186" font-size="12" fill="#111111" font-family="Consolas, monospace" font-weight="bold">ON</text>
+  <text x="1228" y="186" font-size="12" fill="#ffffff" font-family="Consolas, monospace" font-weight="bold">OFF</text>
+  <text x="1261" y="186" font-size="12" fill="#ffffff" font-family="Consolas, monospace" font-weight="bold">OFF</text>
+
+  <!-- Arrow down -->
+  <line x1="1220" y1="200" x2="1220" y2="222" stroke="#d4a020" stroke-width="2" marker-end="url(#arrowGold)"/>
+
+  <text x="1000" y="240" font-size="13" fill="#88bbdd">On NTSC composite TV:</text>
+  <rect x="1150" y="225" width="135" height="22" rx="4" fill="rgb(255,73,0)" stroke="#ffffff40" stroke-width="1"/>
+  <text x="1217" y="241" text-anchor="middle" font-size="13" fill="#ffffff" font-weight="bold">Orange</text>
+
+  <!-- Arrow down -->
+  <line x1="1220" y1="255" x2="1220" y2="277" stroke="#d4a020" stroke-width="2" marker-end="url(#arrowGold)"/>
+
+  <text x="1000" y="295" font-size="13" fill="#88bbdd">PC1 palette index 12:</text>
+  <rect x="1150" y="280" width="135" height="22" rx="4" fill="rgb(255,73,0)" stroke="#ffffff40" stroke-width="1"/>
+  <text x="1217" y="296" text-anchor="middle" font-size="13" fill="#ffffff" font-weight="bold">Same Orange!</text>
+
+  <!-- ==================== MAIN TABLE: ALL 16 NIBBLES ==================== -->
+  <rect x="40" y="338" width="1520" height="530" rx="6" fill="#0d2240" stroke="#d4a020" stroke-width="1.5" opacity="0.9"/>
+  <text x="800" y="368" text-anchor="middle" font-size="18" font-weight="bold" fill="url(#titleGold)">
+    ALL 16 NIBBLE PATTERNS — MODE 6 ARTIFACT COLORS
+  </text>
+  <text x="800" y="388" text-anchor="middle" font-size="12" fill="#88bbdd">Curated by Retro Erik — Mode 6 palette, hand-tuned for CGA composite games on the Olivetti PC1</text>
+  <line x1="60" y1="398" x2="1540" y2="398" stroke="#d4a02060" stroke-width="1"/>
+
+  <!-- Column headers -->
+  <text x="110" y="420" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe880">INDEX</text>
+  <text x="230" y="420" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe880">BITS</text>
+  <text x="380" y="420" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe880">PIXELS</text>
+  <text x="545" y="420" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe880">NTSC COLOR</text>
+  <text x="700" y="420" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe880">PC1 PALETTE</text>
+
+  <text x="870" y="420" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe880">INDEX</text>
+  <text x="990" y="420" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe880">BITS</text>
+  <text x="1140" y="420" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe880">PIXELS</text>
+  <text x="1305" y="420" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe880">NTSC COLOR</text>
+  <text x="1460" y="420" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe880">PC1 PALETTE</text>
+
+  <line x1="60" y1="430" x2="1540" y2="430" stroke="#d4a02060" stroke-width="1"/>
+
+  <!-- Vertical divider between left 8 and right 8 -->
+  <line x1="800" y1="405" x2="800" y2="840" stroke="#d4a02060" stroke-width="1"/>
+
+  <!-- ========== LEFT COLUMN: Nibbles 0–7 ========== -->
+
+  <!-- Row 0: 0000 = Black -->
+  <text x="110" y="462" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">0</text>
+  <text x="230" y="462" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">0000</text>
+  <rect x="330" y="445" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="356" y="445" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="382" y="445" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="408" y="445" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <text x="545" y="462" text-anchor="middle" font-size="13" fill="#cccccc">Black</text>
+  <rect x="660" y="446" width="80" height="20" rx="3" fill="rgb(0,0,0)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 1: 0001 = Dark Green -->
+  <text x="110" y="510" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">1</text>
+  <text x="230" y="510" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">0001</text>
+  <rect x="330" y="493" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="356" y="493" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="382" y="493" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="408" y="493" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <text x="545" y="510" text-anchor="middle" font-size="13" fill="#cccccc">Dark Green</text>
+  <rect x="660" y="494" width="80" height="20" rx="3" fill="rgb(0,109,0)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 2: 0010 = Blue -->
+  <text x="110" y="558" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">2</text>
+  <text x="230" y="558" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">0010</text>
+  <rect x="330" y="541" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="356" y="541" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="382" y="541" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="408" y="541" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <text x="545" y="558" text-anchor="middle" font-size="13" fill="#cccccc">Blue</text>
+  <rect x="660" y="542" width="80" height="20" rx="3" fill="rgb(0,0,219)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 3: 0011 = Cyan -->
+  <text x="110" y="606" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">3</text>
+  <text x="230" y="606" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">0011</text>
+  <rect x="330" y="589" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="356" y="589" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="382" y="589" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="408" y="589" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <text x="545" y="606" text-anchor="middle" font-size="13" fill="#cccccc">Cyan</text>
+  <rect x="660" y="590" width="80" height="20" rx="3" fill="rgb(0,182,219)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 4: 0100 = Dark Red -->
+  <text x="110" y="654" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">4</text>
+  <text x="230" y="654" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">0100</text>
+  <rect x="330" y="637" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="356" y="637" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="382" y="637" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="408" y="637" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <text x="545" y="654" text-anchor="middle" font-size="13" fill="#cccccc">Dark Red</text>
+  <rect x="660" y="638" width="80" height="20" rx="3" fill="rgb(146,0,0)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 5: 0101 = Dark Grey -->
+  <text x="110" y="702" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">5</text>
+  <text x="230" y="702" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">0101</text>
+  <rect x="330" y="685" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="356" y="685" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="382" y="685" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="408" y="685" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <text x="545" y="702" text-anchor="middle" font-size="13" fill="#cccccc">Dark Grey</text>
+  <rect x="660" y="686" width="80" height="20" rx="3" fill="rgb(146,146,146)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 6: 0110 = Purple -->
+  <text x="110" y="750" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">6</text>
+  <text x="230" y="750" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">0110</text>
+  <rect x="330" y="733" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="356" y="733" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="382" y="733" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="408" y="733" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <text x="545" y="750" text-anchor="middle" font-size="13" fill="#cccccc">Purple</text>
+  <rect x="660" y="734" width="80" height="20" rx="3" fill="rgb(146,0,146)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 7: 0111 = Light Blue -->
+  <text x="110" y="798" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">7</text>
+  <text x="230" y="798" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">0111</text>
+  <rect x="330" y="781" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="356" y="781" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="382" y="781" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="408" y="781" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <text x="545" y="798" text-anchor="middle" font-size="13" fill="#cccccc">Light Blue</text>
+  <rect x="660" y="782" width="80" height="20" rx="3" fill="rgb(73,73,255)" stroke="#555555" stroke-width="1"/>
+
+  <!-- ========== RIGHT COLUMN: Nibbles 8–15 ========== -->
+
+  <!-- Row 8: 1000 = Brown -->
+  <text x="870" y="462" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">8</text>
+  <text x="990" y="462" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">1000</text>
+  <rect x="1090" y="445" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1116" y="445" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1142" y="445" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1168" y="445" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <text x="1305" y="462" text-anchor="middle" font-size="13" fill="#cccccc">Brown</text>
+  <rect x="1420" y="446" width="80" height="20" rx="3" fill="rgb(146,73,0)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 9: 1001 = Bright Green -->
+  <text x="870" y="510" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">9</text>
+  <text x="990" y="510" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">1001</text>
+  <rect x="1090" y="493" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1116" y="493" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1142" y="493" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1168" y="493" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <text x="1305" y="510" text-anchor="middle" font-size="13" fill="#cccccc">Bright Green</text>
+  <rect x="1420" y="494" width="80" height="20" rx="3" fill="rgb(36,255,36)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 10: 1010 = Dark Grey -->
+  <text x="870" y="558" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">10</text>
+  <text x="990" y="558" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">1010</text>
+  <rect x="1090" y="541" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1116" y="541" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1142" y="541" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1168" y="541" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <text x="1305" y="558" text-anchor="middle" font-size="13" fill="#cccccc">Grey</text>
+  <rect x="1420" y="542" width="80" height="20" rx="3" fill="rgb(73,73,73)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 11: 1011 = Aqua -->
+  <text x="870" y="606" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">11</text>
+  <text x="990" y="606" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">1011</text>
+  <rect x="1090" y="589" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1116" y="589" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1142" y="589" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1168" y="589" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <text x="1305" y="606" text-anchor="middle" font-size="13" fill="#cccccc">Aqua</text>
+  <rect x="1420" y="590" width="80" height="20" rx="3" fill="rgb(73,255,255)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 12: 1100 = Orange -->
+  <text x="870" y="654" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">12</text>
+  <text x="990" y="654" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">1100</text>
+  <rect x="1090" y="637" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1116" y="637" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1142" y="637" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1168" y="637" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <text x="1305" y="654" text-anchor="middle" font-size="13" fill="#cccccc">Orange</text>
+  <rect x="1420" y="638" width="80" height="20" rx="3" fill="rgb(255,73,0)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 13: 1101 = Yellow -->
+  <text x="870" y="702" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">13</text>
+  <text x="990" y="702" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">1101</text>
+  <rect x="1090" y="685" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1116" y="685" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1142" y="685" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1168" y="685" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <text x="1305" y="702" text-anchor="middle" font-size="13" fill="#cccccc">Yellow</text>
+  <rect x="1420" y="686" width="80" height="20" rx="3" fill="rgb(255,255,0)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 14: 1110 = Hot Pink -->
+  <text x="870" y="750" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">14</text>
+  <text x="990" y="750" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">1110</text>
+  <rect x="1090" y="733" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1116" y="733" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1142" y="733" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1168" y="733" width="24" height="22" fill="#111111" stroke="#555555" stroke-width="0.5"/>
+  <text x="1305" y="750" text-anchor="middle" font-size="13" fill="#cccccc">Hot Pink</text>
+  <rect x="1420" y="734" width="80" height="20" rx="3" fill="rgb(255,109,219)" stroke="#555555" stroke-width="1"/>
+
+  <!-- Row 15: 1111 = White -->
+  <text x="870" y="798" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">15</text>
+  <text x="990" y="798" text-anchor="middle" font-size="14" fill="#aaccee" font-family="Consolas, monospace">1111</text>
+  <rect x="1090" y="781" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1116" y="781" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1142" y="781" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <rect x="1168" y="781" width="24" height="22" fill="#ffffff" stroke="#555555" stroke-width="0.5"/>
+  <text x="1305" y="798" text-anchor="middle" font-size="13" fill="#cccccc">White</text>
+  <rect x="1420" y="782" width="80" height="20" rx="3" fill="rgb(255,255,255)" stroke="#555555" stroke-width="1"/>
+
+  <!-- ==================== BOTTOM SUMMARY ==================== -->
+  <text x="800" y="848" text-anchor="middle" font-size="13" fill="#88bbdd" opacity="0.8">
+    Curated by Retro Erik — Mode 6 (640×200) — Olivetti Prodest PC1 / Yamaha V6355D — NTSC-16COLOR-TSR
+  </text>
+  <text x="1555" y="862" text-anchor="end" font-size="10" fill="#e8cb70" font-style="italic">Illustration by Retro Erik</text>
+
+</svg>

@@ -1,0 +1,262 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <!-- Background gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1a3a5c"/>
+      <stop offset="100%" stop-color="#0a1a2e"/>
+    </radialGradient>
+    <!-- Gold gradient for borders -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4a020"/>
+      <stop offset="30%" stop-color="#f0d060"/>
+      <stop offset="50%" stop-color="#ffe880"/>
+      <stop offset="70%" stop-color="#f0d060"/>
+      <stop offset="100%" stop-color="#d4a020"/>
+    </linearGradient>
+    <!-- Gold gradient for title -->
+    <linearGradient id="titleGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a07010"/>
+      <stop offset="20%" stop-color="#d4a020"/>
+      <stop offset="50%" stop-color="#ffe880"/>
+      <stop offset="80%" stop-color="#d4a020"/>
+      <stop offset="100%" stop-color="#a07010"/>
+    </linearGradient>
+    <!-- Grid pattern -->
+    <pattern id="gridPat" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="none"/>
+      <line x1="20" y1="0" x2="20" y2="20" stroke="#ffffff08" stroke-width="0.5"/>
+      <line x1="0" y1="20" x2="20" y2="20" stroke="#ffffff08" stroke-width="0.5"/>
+    </pattern>
+    <!-- Glow filter for title -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- ==================== BACKGROUND ==================== -->
+  <rect width="1600" height="900" fill="url(#bgGrad)"/>
+  <rect width="1600" height="900" fill="url(#gridPat)"/>
+
+  <!-- ==================== OUTER GOLD BORDER ==================== -->
+  <rect x="15" y="15" width="1570" height="870" rx="8" ry="8"
+        fill="none" stroke="url(#goldGrad)" stroke-width="4"/>
+  <rect x="22" y="22" width="1556" height="856" rx="6" ry="6"
+        fill="none" stroke="#d4a02060" stroke-width="1"/>
+
+  <!-- Corner ornaments -->
+  <circle cx="15" cy="15" r="6" fill="#d4a020" opacity="0.6"/>
+  <circle cx="1585" cy="15" r="6" fill="#d4a020" opacity="0.6"/>
+  <circle cx="15" cy="885" r="6" fill="#d4a020" opacity="0.6"/>
+  <circle cx="1585" cy="885" r="6" fill="#d4a020" opacity="0.6"/>
+
+  <!-- ==================== TITLE ==================== -->
+  <text x="800" y="62" text-anchor="middle" font-size="30" font-weight="bold"
+        fill="url(#titleGold)" filter="url(#glow)" letter-spacing="3">
+    CGA MODE 4/5 — HOW PIXEL PAIRS BECOME COLORS
+  </text>
+  <line x1="100" y1="78" x2="1500" y2="78" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Subtitle -->
+  <text x="800" y="100" text-anchor="middle" font-size="15" fill="#88bbdd" opacity="0.9">
+    CGA Mode 4 (320×200, 4 Colors) — Each pair of pixels blends into 1 color / Curated by Retro Erik — Mode 4/5
+  </text>
+
+  <!-- ==================== PANEL 1: WHY 2 PIXELS = 1 COLOR ==================== -->
+  <rect x="40" y="118" width="470" height="200" rx="6" fill="#0d2240" stroke="#d4a020" stroke-width="1.5" opacity="0.9"/>
+  <text x="275" y="145" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffe880">WHY 2 PIXELS = 1 COLOR</text>
+  <line x1="60" y1="155" x2="490" y2="155" stroke="#d4a02060" stroke-width="1"/>
+
+  <text x="60" y="178" font-size="13" fill="#ccddeeff">CGA mode 4 gives each pixel 2 bits —</text>
+  <text x="60" y="196" font-size="13" fill="#ccddeeff">choosing from Black, Cyan, Magenta, or White.</text>
+  <text x="60" y="220" font-size="13" fill="#ccddeeff">Two adjacent pixels span one NTSC color cycle.</text>
+  <text x="60" y="244" font-size="13" fill="#ccddeeff">On composite, they blend into a single color.</text>
+  <text x="60" y="268" font-size="13" fill="#ccddeeff">4 left options × 4 right options = 16 pairs.</text>
+  <text x="60" y="296" font-size="13" fill="#ffe880" font-weight="bold">2 pixels → 1 nibble → 16 blended colors</text>
+
+  <!-- ==================== PANEL 2: THE PC1 TRICK ==================== -->
+  <rect x="530" y="118" width="470" height="200" rx="6" fill="#0d2240" stroke="#d4a020" stroke-width="1.5" opacity="0.9"/>
+  <text x="765" y="145" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffe880">THE PC1 TRICK — MODE 4/5</text>
+  <line x1="550" y1="155" x2="980" y2="155" stroke="#d4a02060" stroke-width="1"/>
+
+  <text x="550" y="178" font-size="13" fill="#ccddeeff">The V6355D reads each nibble (4 bits)</text>
+  <text x="550" y="196" font-size="13" fill="#ccddeeff">as a color index — two CGA pixels per lookup.</text>
+  <text x="550" y="220" font-size="13" fill="#ccddeeff">Program palette[0–15] with the color each</text>
+  <text x="550" y="238" font-size="13" fill="#ccddeeff">pixel pair would produce on NTSC composite.</text>
+  <text x="550" y="262" font-size="13" fill="#ccddeeff">The game writes standard CGA data.</text>
+  <text x="550" y="280" font-size="13" fill="#ccddeeff">The V6355D displays it in 16 colors.</text>
+  <text x="550" y="308" font-size="13" fill="#ffe880" font-weight="bold">Same data, 16 colors — no CPU needed</text>
+
+  <!-- ==================== PANEL 3: EXAMPLE ==================== -->
+  <rect x="1020" y="118" width="540" height="200" rx="6" fill="#0d2240" stroke="#d4a020" stroke-width="1.5" opacity="0.9"/>
+  <text x="1290" y="145" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffe880">EXAMPLE: WHITE + CYAN</text>
+  <line x1="1040" y1="155" x2="1540" y2="155" stroke="#d4a02060" stroke-width="1"/>
+
+  <!-- Two CGA pixel boxes -->
+  <text x="1060" y="182" font-size="13" fill="#88bbdd">Two CGA pixels:</text>
+  <rect x="1220" y="168" width="50" height="22" rx="2" fill="#FFFFFF" stroke="#88bbdd" stroke-width="1"/>
+  <text x="1230" y="184" font-size="11" fill="#000000" font-family="Consolas, monospace" font-weight="bold">WHT</text>
+  <rect x="1278" y="168" width="50" height="22" rx="2" fill="#00AAAA" stroke="#88bbdd" stroke-width="1"/>
+  <text x="1288" y="184" font-size="11" fill="#000000" font-family="Consolas, monospace" font-weight="bold">CYN</text>
+
+  <!-- Binary values -->
+  <text x="1060" y="210" font-size="13" fill="#88bbdd">2-bit values:</text>
+  <text x="1235" y="210" font-size="13" fill="#ffe880" font-family="Consolas, monospace">11    01</text>
+
+  <!-- Combined nibble -->
+  <text x="1060" y="238" font-size="13" fill="#88bbdd">Combined nibble:</text>
+  <text x="1235" y="238" font-size="13" fill="#ffe880" font-family="Consolas, monospace">1101 = index 13</text>
+
+  <!-- Result -->
+  <text x="1060" y="266" font-size="13" fill="#88bbdd">PC1 displays:</text>
+  <rect x="1220" y="252" width="100" height="22" rx="3" fill="#FFFF00" stroke="#d4a020" stroke-width="1"/>
+  <text x="1332" y="268" font-size="13" fill="#ffe880" font-weight="bold">Yellow</text>
+
+  <text x="1060" y="300" font-size="12" fill="#88bbdd99" font-style="italic">Same nibble, same color — digitally clean</text>
+
+  <!-- ==================== 4×4 MATRIX GRID ==================== -->
+
+  <!-- Axis labels -->
+  <text x="870" y="338" text-anchor="middle" font-size="12" fill="#88bbdd" font-weight="bold" opacity="0.8" letter-spacing="2">→ RIGHT PIXEL →</text>
+  <text x="111" y="338" text-anchor="middle" font-size="12" fill="#88bbdd" font-weight="bold" opacity="0.8" letter-spacing="1">LEFT PIXEL ↓</text>
+
+  <!-- Column headers (centered in each column) -->
+  <text x="367" y="362" text-anchor="middle" font-size="14" fill="#d4a020" font-weight="bold">Black (0)</text>
+  <text x="702" y="362" text-anchor="middle" font-size="14" fill="#d4a020" font-weight="bold">Cyan (1)</text>
+  <text x="1037" y="362" text-anchor="middle" font-size="14" fill="#d4a020" font-weight="bold">Magenta (2)</text>
+  <text x="1372" y="362" text-anchor="middle" font-size="14" fill="#d4a020" font-weight="bold">White (3)</text>
+
+  <!-- Row headers (centered in row header area) -->
+  <text x="111" y="434" text-anchor="middle" font-size="14" fill="#d4a020" font-weight="bold">Black (0)</text>
+  <text x="111" y="550" text-anchor="middle" font-size="14" fill="#d4a020" font-weight="bold">Cyan (1)</text>
+  <text x="111" y="666" text-anchor="middle" font-size="14" fill="#d4a020" font-weight="bold">Magenta (2)</text>
+  <text x="111" y="782" text-anchor="middle" font-size="14" fill="#d4a020" font-weight="bold">White (3)</text>
+
+  <!-- Grid frame -->
+  <rect x="200" y="372" width="1340" height="464" rx="4"
+        fill="none" stroke="#d4a020" stroke-width="2"/>
+
+  <!-- Vertical grid lines -->
+  <line x1="535" y1="372" x2="535" y2="836" stroke="#d4a020" stroke-width="1.5"/>
+  <line x1="870" y1="372" x2="870" y2="836" stroke="#d4a020" stroke-width="1.5"/>
+  <line x1="1205" y1="372" x2="1205" y2="836" stroke="#d4a020" stroke-width="1.5"/>
+
+  <!-- Horizontal grid lines -->
+  <line x1="200" y1="488" x2="1540" y2="488" stroke="#d4a020" stroke-width="1.5"/>
+  <line x1="200" y1="604" x2="1540" y2="604" stroke="#d4a020" stroke-width="1.5"/>
+  <line x1="200" y1="720" x2="1540" y2="720" stroke="#d4a020" stroke-width="1.5"/>
+
+  <!-- ==================== ROW 0: LEFT = BLACK ==================== -->
+
+  <!-- Cell (0,0): Index 0, BB, Black, #000000 -->
+  <rect x="202" y="374" width="331" height="112" rx="3" fill="#000000"/>
+  <text x="212" y="392" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#ffe880">0: BB</text>
+  <text x="367" y="436" text-anchor="middle" font-size="17" font-weight="bold" fill="#ffe880">Black</text>
+  <text x="367" y="459" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#ffe880" opacity="0.7">#000000</text>
+
+  <!-- Cell (0,1): Index 1, BC, Dark Green, #006D00 -->
+  <rect x="537" y="374" width="331" height="112" rx="3" fill="#006D00"/>
+  <text x="547" y="392" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#ffe880">1: BC</text>
+  <text x="702" y="436" text-anchor="middle" font-size="17" font-weight="bold" fill="#ffe880">Dark Green</text>
+  <text x="702" y="459" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#ffe880" opacity="0.7">#006D00</text>
+
+  <!-- Cell (0,2): Index 2, BM, Blue, #0000DB -->
+  <rect x="872" y="374" width="331" height="112" rx="3" fill="#0000DB"/>
+  <text x="882" y="392" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#ffe880">2: BM</text>
+  <text x="1037" y="436" text-anchor="middle" font-size="17" font-weight="bold" fill="#ffe880">Blue</text>
+  <text x="1037" y="459" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#ffe880" opacity="0.7">#0000DB</text>
+
+  <!-- Cell (0,3): Index 3, BW, Cyan, #00B6DB -->
+  <rect x="1207" y="374" width="331" height="112" rx="3" fill="#00B6DB"/>
+  <text x="1217" y="392" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#1a1a1a">3: BW</text>
+  <text x="1372" y="436" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">Cyan</text>
+  <text x="1372" y="459" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#1a1a1a" opacity="0.7">#00B6DB</text>
+
+  <!-- ==================== ROW 1: LEFT = CYAN ==================== -->
+
+  <!-- Cell (1,0): Index 4, CB, Dark Red, #920000 -->
+  <rect x="202" y="490" width="331" height="112" rx="3" fill="#920000"/>
+  <text x="212" y="508" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#ffe880">4: CB</text>
+  <text x="367" y="552" text-anchor="middle" font-size="17" font-weight="bold" fill="#ffe880">Dark Red</text>
+  <text x="367" y="575" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#ffe880" opacity="0.7">#920000</text>
+
+  <!-- Cell (1,1): Index 5, CC, Dark Grey, #929292 -->
+  <rect x="537" y="490" width="331" height="112" rx="3" fill="#929292"/>
+  <text x="547" y="508" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#1a1a1a">5: CC</text>
+  <text x="702" y="552" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">Dark Grey</text>
+  <text x="702" y="575" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#1a1a1a" opacity="0.7">#929292</text>
+
+  <!-- Cell (1,2): Index 6, CM, Magenta, #920092 -->
+  <rect x="872" y="490" width="331" height="112" rx="3" fill="#920092"/>
+  <text x="882" y="508" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#ffe880">6: CM</text>
+  <text x="1037" y="552" text-anchor="middle" font-size="17" font-weight="bold" fill="#ffe880">Magenta</text>
+  <text x="1037" y="575" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#ffe880" opacity="0.7">#920092</text>
+
+  <!-- Cell (1,3): Index 7, CW, Light Blue, #4949FF -->
+  <rect x="1207" y="490" width="331" height="112" rx="3" fill="#4949FF"/>
+  <text x="1217" y="508" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#ffe880">7: CW</text>
+  <text x="1372" y="552" text-anchor="middle" font-size="17" font-weight="bold" fill="#ffe880">Light Blue</text>
+  <text x="1372" y="575" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#ffe880" opacity="0.7">#4949FF</text>
+
+  <!-- ==================== ROW 2: LEFT = MAGENTA ==================== -->
+
+  <!-- Cell (2,0): Index 8, MB, Brown, #924900 -->
+  <rect x="202" y="606" width="331" height="112" rx="3" fill="#924900"/>
+  <text x="212" y="624" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#ffe880">8: MB</text>
+  <text x="367" y="668" text-anchor="middle" font-size="17" font-weight="bold" fill="#ffe880">Brown</text>
+  <text x="367" y="691" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#ffe880" opacity="0.7">#924900</text>
+
+  <!-- Cell (2,1): Index 9, MC, Bright Green, #24FF24 -->
+  <rect x="537" y="606" width="331" height="112" rx="3" fill="#24FF24"/>
+  <text x="547" y="624" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#1a1a1a">9: MC</text>
+  <text x="702" y="668" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">Bright Green</text>
+  <text x="702" y="691" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#1a1a1a" opacity="0.7">#24FF24</text>
+
+  <!-- Cell (2,2): Index 10, MM, Grey, #494949 -->
+  <rect x="872" y="606" width="331" height="112" rx="3" fill="#494949"/>
+  <text x="882" y="624" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#ffe880">10: MM</text>
+  <text x="1037" y="668" text-anchor="middle" font-size="17" font-weight="bold" fill="#ffe880">Grey</text>
+  <text x="1037" y="691" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#ffe880" opacity="0.7">#494949</text>
+
+  <!-- Cell (2,3): Index 11, MW, Aqua, #49FFFF -->
+  <rect x="1207" y="606" width="331" height="112" rx="3" fill="#49FFFF"/>
+  <text x="1217" y="624" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#1a1a1a">11: MW</text>
+  <text x="1372" y="668" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">Aqua</text>
+  <text x="1372" y="691" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#1a1a1a" opacity="0.7">#49FFFF</text>
+
+  <!-- ==================== ROW 3: LEFT = WHITE ==================== -->
+
+  <!-- Cell (3,0): Index 12, WB, Pink, #FF49B6 -->
+  <rect x="202" y="722" width="331" height="112" rx="3" fill="#FF49B6"/>
+  <text x="212" y="740" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#1a1a1a">12: WB</text>
+  <text x="367" y="784" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">Pink</text>
+  <text x="367" y="807" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#1a1a1a" opacity="0.7">#FF49B6</text>
+
+  <!-- Cell (3,1): Index 13, WC, Yellow, #FFFF00 -->
+  <rect x="537" y="722" width="331" height="112" rx="3" fill="#FFFF00"/>
+  <text x="547" y="740" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#1a1a1a">13: WC</text>
+  <text x="702" y="784" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">Yellow</text>
+  <text x="702" y="807" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#1a1a1a" opacity="0.7">#FFFF00</text>
+
+  <!-- Cell (3,2): Index 14, WM, Light Red, #FF4949 -->
+  <rect x="872" y="722" width="331" height="112" rx="3" fill="#FF4949"/>
+  <text x="882" y="740" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#1a1a1a">14: WM</text>
+  <text x="1037" y="784" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">Light Red</text>
+  <text x="1037" y="807" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#1a1a1a" opacity="0.7">#FF4949</text>
+
+  <!-- Cell (3,3): Index 15, WW, White, #FFFFFF -->
+  <rect x="1207" y="722" width="331" height="112" rx="3" fill="#FFFFFF"/>
+  <text x="1217" y="740" font-size="12" font-family="Consolas, monospace" font-weight="bold" fill="#1a1a1a">15: WW</text>
+  <text x="1372" y="784" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">White</text>
+  <text x="1372" y="807" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#1a1a1a" opacity="0.7">#FFFFFF</text>
+
+  <!-- ==================== BOTTOM SUMMARY ==================== -->
+  <text x="800" y="855" text-anchor="middle" font-size="13" fill="#88bbdd" opacity="0.8">
+    Curated by Retro Erik — Mode 4/5 (320×200) — Olivetti Prodest PC1 / Yamaha V6355D — Best for: KQ1, Bruce Lee, Ms. Pac-Man, Zaxxon, Galaxian
+  </text>
+  <text x="1555" y="862" text-anchor="end" font-size="10" fill="#e8cb70" font-style="italic">Illustration by Retro Erik</text>
+
+</svg>
