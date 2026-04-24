@@ -157,7 +157,7 @@ PC1-NTSC.COM /U     Uninstall the TSR
 
 ## License
 
-This project is licensed under the **GNU General Public License v3.0** — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)** — see the [LICENSE](LICENSE) file for details.
 
 Copyright (C) 2026 Retro Erik
 
