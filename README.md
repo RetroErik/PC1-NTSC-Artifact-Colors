@@ -112,11 +112,6 @@ The TSR auto-selects the correct palette when a game sets the video mode. Hotkey
 </p>
 
 <p>
-<em>Bruce Lee — Intro</em><br>
-<img src="Screenshots/Bruce%20Lee%20-%20intro%20CGA%20Composite.png" width="60%" alt="Bruce Lee - Intro">
-</p>
-
-<p>
 <em>Bruce Lee</em><br>
 <img src="Screenshots/Bruce%20Lee%20CGA%20Composite.png" width="60%" alt="Bruce Lee">
 </p>
